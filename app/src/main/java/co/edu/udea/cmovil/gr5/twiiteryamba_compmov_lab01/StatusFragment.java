@@ -2,6 +2,7 @@ package co.edu.udea.cmovil.gr5.twiiteryamba_compmov_lab01;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.preference.PreferenceManager;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,11 +37,6 @@ public class StatusFragment extends Fragment {
     private EditText mTextStatus;
     private TextView mTextCount;
     private int mDefaultColor;
-
-    public StatusFragment() {
-        // Required empty public constructor
-    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -110,6 +107,11 @@ public class StatusFragment extends Fragment {
                 String username = prefs.getString("username", "student");
                 String password = prefs.getString("password", "password");
 
+                if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
+                    getActivity().startActivity(
+                            new Intent(getActivity(), SettingsActivity.class));
+                    return "Please update your username and password";
+                }
                 YambaClient cloud = new YambaClient(username, password);
                 cloud.postStatus(params[0]);
 
