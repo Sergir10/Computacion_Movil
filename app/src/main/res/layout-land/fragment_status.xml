@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/status_text"
+            android:layout_width="237dp"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:gravity="top|left"
+            android:hint="@string/status_text_hint"
+            android:inputType="textMultiLine">
+
+            <requestFocus />
+        </EditText>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/status_button_tweet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/status_button_tweet"
+                android:enabled="true"/>
+
+            <TextView
+                android:id="@+id/status_text_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/one_hundred_forty" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="258dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="#1117ff">
+
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

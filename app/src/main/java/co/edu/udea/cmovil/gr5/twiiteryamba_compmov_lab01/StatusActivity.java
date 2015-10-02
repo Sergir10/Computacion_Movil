@@ -1,30 +1,15 @@
 package co.edu.udea.cmovil.gr5.twiiteryamba_compmov_lab01;
 
-import android.app.ProgressDialog;
-import android.os.AsyncTask;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.thenewcircle.yamba.client.YambaClient;
 
 public class StatusActivity extends AppCompatActivity {
 
-    /*
-    Instanciar variables globales.
-     */
-    private static final String TAG = StatusActivity.class.getSimpleName();
-    private Button mButtonTweet;
-    private EditText mTextStatus;
-    private TextView mTextCount;
-    private int mDefaultColor;
+
 
 
     @Override
@@ -32,22 +17,13 @@ public class StatusActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
 
-        // Inicializando.
-        mButtonTweet = (Button) findViewById(R.id.status_button_tweet);
-        mTextStatus = (EditText) findViewById(R.id.status_text);
-        mTextCount = (TextView) findViewById(R.id.status_text_count);
-        mTextCount.setText(Integer.toString(140));
-        mDefaultColor = mTextCount.getTextColors().getDefaultColor();
-
-        mButtonTweet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String status = mTextStatus.getText().toString();
-                PostTask postTask = new PostTask();
-                postTask.execute(status);
-                Log.d(TAG, "onClicked");
-            }
-        });
+        if (savedInstanceState == null){
+            StatusFragment fragment = new StatusFragment();
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(android.R.id.content, fragment, fragment.getClass().getSimpleName());
+            fragmentTransaction.commit();
+        }
     }
 
     @Override
@@ -70,39 +46,5 @@ public class StatusActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public class PostTask extends AsyncTask<String, Void, String> {
-        private ProgressDialog progress;
-
-        @Override
-        protected void onPreExecute(){
-            progress = ProgressDialog.show(StatusActivity.this,"Posting", "Please wait...");
-            progress.setCancelable(true);
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            try {
-                YambaClient cloud = new YambaClient("student", "password");
-                cloud.postStatus(params[0]);
-
-                Log.d(TAG, "Successfully posted to the cloud: " + params[0]);
-                return "Successfully posted";
-
-            } catch (Exception e) {
-                Log.e(TAG, "Failed to post to the cloud", e);
-                e.printStackTrace();
-                return "Failed to post";
-            }
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            progress.dismiss();
-            if (this != null && result != null) {
-                Toast.makeText(StatusActivity.this, result, Toast.LENGTH_LONG).show();
-            }
-        }
     }
 }

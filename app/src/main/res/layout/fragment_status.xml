@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="co.edu.udea.cmovil.gr5.twiiteryamba_compmov_lab01.StatusFragment">
+
+    <EditText
+        android:id="@+id/status_text"
+        android:layout_width="match_parent"
+        android:layout_height="458dp"
+        android:layout_below="@+id/status_button_tweet"
+        android:ems="10"
+        android:gravity="top|left"
+        android:hint="@string/status_text_hint"
+        android:inputType="textMultiLine"
+        android:layout_gravity="center_horizontal|bottom">
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/status_button_tweet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/status_button_tweet"
+        android:layout_gravity="right|top" />
+
+    <TextView
+        android:id="@+id/status_text_count"
+        android:layout_width="39dp"
+        android:layout_height="26dp"
+        android:layout_alignBaseline="@+id/status_button_tweet"
+        android:layout_alignBottom="@+id/status_button_tweet"
+        android:layout_alignLeft="@+id/status_text"
+        android:text="@string/one_hundred_forty"
+        android:layout_gravity="center_horizontal|top" />
+
+</RelativeLayout>
