@@ -32,7 +32,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, SettingsActivity.class));
                 return true;
             case R.id.action_tweet:
+                /*
+                    ¿Cómo funciona esta linea?
+                 */
                 startActivity(new Intent("android.intent.action.tweet"));
+                return true;
+            case R.id.action_refresh:
+                startService(new Intent(this, RefreshService.class));
                 return true;
             default:
                 return false;

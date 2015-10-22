@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Archivo de configuración XML que sirve para crear la vista
+     settings en la aplicación, despliega los recursos necesarios. -->
     <EditTextPreference
         android:key="username"
         android:summary="@string/username_summary"

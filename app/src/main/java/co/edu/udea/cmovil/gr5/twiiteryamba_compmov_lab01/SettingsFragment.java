@@ -6,6 +6,14 @@ import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 
+
+/*
+    Interfaz gráfica que aparece al seleccionar la opción settings.
+    Tiene la lista que definimos en el recurso XML "Setting"
+
+    Clase donde se almacena además las preferencias configuradas por el
+    usuario de la aplicación
+ */
 public class SettingsFragment extends PreferenceFragment implements
         SharedPreferences.OnSharedPreferenceChangeListener {
 

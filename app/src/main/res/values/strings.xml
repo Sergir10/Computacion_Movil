@@ -13,6 +13,7 @@
     <string name="one_hundred_forty">140</string>
     <string name="interval">Refresh Interval</string>
     <string name="interval_summary">How frequently should data refresh?</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">Sergir App</string>
+    <string name="refresh">Refresh</string>
 
 </resources>

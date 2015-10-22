@@ -109,6 +109,11 @@ public class StatusFragment extends Fragment {
 
                 if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
                     getActivity().startActivity(
+                            /*
+                             Linea que invoca la actividad "SettingsActivity"
+                             Los intent sirven para invocar componentes como las
+                             Actividades.
+                              */
                             new Intent(getActivity(), SettingsActivity.class));
                     return "Please update your username and password";
                 }
